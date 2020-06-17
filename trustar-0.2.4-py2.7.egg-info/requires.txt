@@ -1,0 +1,7 @@
+future
+python-dateutil
+pytz
+requests
+configparser
+unicodecsv
+tzlocal

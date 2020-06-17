@@ -1,0 +1,9 @@
+..\trustar\TruStar.py
+..\trustar\__init__.py
+..\trustar\TruStar.pyc
+..\trustar\__init__.pyc
+dependency_links.txt
+PKG-INFO
+requires.txt
+SOURCES.txt
+top_level.txt

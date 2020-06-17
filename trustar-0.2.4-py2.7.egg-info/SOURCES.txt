@@ -1,0 +1,9 @@
+README.rst
+setup.cfg
+trustar/TruStar.py
+trustar/__init__.py
+trustar.egg-info/PKG-INFO
+trustar.egg-info/SOURCES.txt
+trustar.egg-info/dependency_links.txt
+trustar.egg-info/requires.txt
+trustar.egg-info/top_level.txt
