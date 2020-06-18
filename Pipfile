@@ -1,0 +1,21 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+trustar-guardduty = {editable = true,path = "."}
+
+flake8 = "==3.7.9"
+black = "==19.10b0"
+pytest = "==5.4.1"
+moto = "==1.3.14"
+requests-mock = "==1.7.0"
+
+[requires]
+python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true

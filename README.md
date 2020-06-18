@@ -1,1 +1,0 @@
-# aws-guard-duty
