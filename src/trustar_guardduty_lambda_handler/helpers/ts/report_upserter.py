@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 logger = getLogger(__name__)                                    # type: Logger
 
 
-class TruStarReportUpserter:
+class ReportUpserter:
     """ Upserts Reports to Station. """
 
     def __init__(self, ts,                                  # type: TruStar

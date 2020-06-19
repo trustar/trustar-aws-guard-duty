@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 logger = getLogger(__name__)                                    # type: Logger
 
 
-class TruStarEnclavePermissionsChecker:
+class EnclavePermissionsChecker:
     """ Verifies that the TruStar client's API creds have the specified
     level of access to the specified enclave. """
 

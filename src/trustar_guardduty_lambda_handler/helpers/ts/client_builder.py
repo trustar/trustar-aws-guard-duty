@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 logger = getLogger(__name__)
 
 
-class TruStarClientBuilder:
+class ClientBuilder:
     """ Builds TruStar client from Lambda's Environ Vars. """
 
     TRUSTAR_CLIENT_PARAMS = ['user_api_key',
