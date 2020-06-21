@@ -23,14 +23,6 @@ defined in the `ENCLAVE_ID` variable. """
 import logging
 from trustar_guardduty_lambda_handler.lambda_handler import TruStarGuardDutyLambdaHandler
 
-
-from typing import TYPE_CHECKING
-if TYPE_CHECKING:
-    from typing import *
-
-logger = logging.getLogger(__name__)
-
-
 def lambda_handler(event, context):  # type: (Dict, Dict) -> None
     """ Sends Finding to Station. """
     TruStarGuardDutyLambdaHandler.handle(event, context)
