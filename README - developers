@@ -1,0 +1,29 @@
+
+Target audience:
+This repo is intended for developer use.  It contains source code that needs to
+go through a "build" process to construct a bundle (.zip) that can be uploaded
+to Lambda either directly, or via an S3 bucket.
+
+
+Software:
+- Docker for OS X   (follow installation instructions on Docker's docs.)
+- Homebrew package manager  (follow Homebrew's installation docs.)
+- AWS SAM CLI
+   - installed from Homebrew.
+   - install docs:   https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install-mac.html
+- Python 3.7.7
+   - Lambda uses a Python 3.7.7 run-time environment
+   - SAM CLI must build your Lambda's dependencies using Python 3.7.7
+   - AWS SAM CLI utility uses Python 3.7.7
+   * Gets installed automatically for you by Homebrew when you use Homebrew
+     to install the AWS SAM CLI utility.
+
+
+Making the zip:
+* These instructions assume you're using OS X.
+- clone this repo.
+- install Docker, if not yet installed on your dev computer.
+- install Homebrew, if not yet installed on your dev computer.
+- Follow these instructions to install AWS SAM CLI utility:
+    https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install-mac.html
+- 

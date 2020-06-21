@@ -33,7 +33,7 @@ class TruStarGuardDutyLambdaHandler:
             client_metatag="AWS_GUARD_DUTY")                   # type: TruStar
 
         permissions_checker = EnclavePermissionsChecker(ts)
-        if not permissions_checker.can_read():
+        if not permissions_checker.can_read(destination_enclave):
             raise Exception("TruSTAR API creds do not have permissions to "
                             "read from enclave '{}'."
                             .format(destination_enclave))
