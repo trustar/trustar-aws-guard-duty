@@ -4,12 +4,12 @@
 
 import os
 from logging import getLogger
-from typing import TYPE_CHECKING
 from .helpers.gd.report_builder import GuardDutyReportBuilder
 from .helpers.ts.enclave_permissions_checker import EnclavePermissionsChecker
 from .helpers.ts.report_upserter import ReportUpserter
 from .helpers.ts.client_builder import ClientBuilder
 
+from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from typing import *
     from logging import Logger
@@ -33,12 +33,14 @@ class TruStarGuardDutyLambdaHandler:
             client_metatag="AWS_GUARD_DUTY")                   # type: TruStar
 
         permissions_checker = EnclavePermissionsChecker(ts)
-        if not permissions_checker.can_read(destination_enclave):
+        if not permissions_checker.can_create(destination_enclave):
             raise Exception("TruSTAR API creds do not have permissions to "
-                            "read from enclave '{}'."
+                            "write to enclave '{}'."
                             .format(destination_enclave))
 
         upserter = ReportUpserter(ts, [destination_enclave])
-        _ = upserter.upsert(gd_report)
+        upserted_report = upserter.upsert(gd_report)
 
         logger.info("lambda handler complete.")
+
+        return _
