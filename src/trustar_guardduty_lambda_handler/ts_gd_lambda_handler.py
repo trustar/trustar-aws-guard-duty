@@ -21,7 +21,7 @@ logger = getLogger(__name__)                                    # type: Logger
 class TruStarGuardDutyLambdaHandler:
 
     @staticmethod
-    def handle(event, context):                    # type: (Dict, Any) -> None
+    def handle(event, context):                  # type: (Dict, Any) -> Report
         """ """
         destination_enclave = os.environ['ENCLAVE_ID']
 
@@ -39,8 +39,8 @@ class TruStarGuardDutyLambdaHandler:
                             .format(destination_enclave))
 
         upserter = ReportUpserter(ts, [destination_enclave])
-        upserted_report = upserter.upsert(gd_report)
+        upserted_report = upserter.upsert(gd_report)            # type: Report
 
         logger.info("lambda handler complete.")
 
-        return _
+        return upserted_report
