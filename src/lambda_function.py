@@ -20,7 +20,7 @@ To deploy:
 The associated API credential will need to have write access to the enclave
 defined in the `ENCLAVE_ID` variable. """
 
-from trustar_guardduty_lambda_handler.ts_gd_lambda_handler import TruStarGuardDutyLambdaHandler
+from trustar_guardduty_lambda_handler import TruStarGuardDutyLambdaHandler
 
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
