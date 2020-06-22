@@ -1,2 +1,5 @@
 .pyc
 .DS_Store
+private
+private/
+__pycache__
