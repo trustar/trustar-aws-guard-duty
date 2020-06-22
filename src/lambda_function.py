@@ -20,12 +20,14 @@ To deploy:
 The associated API credential will need to have write access to the enclave
 defined in the `ENCLAVE_ID` variable. """
 
-import logging
-from trustar_guardduty_lambda_handler.lambda_handler import TruStarGuardDutyLambdaHandler
+from trustar_guardduty_lambda_handler.ts_gd_lambda_handler import TruStarGuardDutyLambdaHandler
 
-def lambda_handler(event, context):  # type: (Dict, Dict) -> None
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from typing import *
+    from trustar import Report
+
+def lambda_handler(event, context):               # type: (Dict, Dict) -> Dict
     """ Sends Finding to Station. """
-    TruStarGuardDutyLambdaHandler.handle(event, context)
-
-
-
+    r = TruStarGuardDutyLambdaHandler.handle(event, context)    # type: Report
+    return r.to_dict()
