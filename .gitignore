@@ -1,5 +1,5 @@
 .pyc
 .DS_Store
-private
-private/
 __pycache__
+*.conf
+*.ini
