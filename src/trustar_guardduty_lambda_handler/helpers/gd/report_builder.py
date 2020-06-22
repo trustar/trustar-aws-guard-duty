@@ -4,8 +4,9 @@
 
 import json
 from logging import getLogger
-from typing import TYPE_CHECKING
 from trustar import Report
+
+from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from typing import *
     from logging import Logger
