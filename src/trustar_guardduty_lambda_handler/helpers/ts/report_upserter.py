@@ -4,6 +4,7 @@
 
 from logging import getLogger
 from trustar import TruStar, IdType
+
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from typing import *
@@ -26,6 +27,13 @@ class ReportUpserter:
         """ Upserts report, returns True if success, False if fail. """
         logger.info("Starting upsert for report with external ID '{}'."
                     .format(report.external_id))
+
+        if report.enclave_ids:
+            if set(report.enclave_ids) != set(self.enclave_ids):
+                raise Exception("Report object's enclave_ids do not match "
+                                "the up-serter's enclave_ids.  Fix this.")
+        else:
+            report.enclave_ids = self.enclave_ids
 
         existing_report = None                          # type: None or Report
         try:
