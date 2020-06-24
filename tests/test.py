@@ -29,11 +29,10 @@ class TestScript:
         self.config_file_path = config_file_path                  # type: str
         self.delete_reports_when_done = delete_reports_when_done  # type: bool
 
-        # used by load/set/cleanup methods.
+        # used by methods.
         self.__env_vars = None                            # type: None or Dict
-
-        # used by load/atteempt methods.
         self.__test_event = None                          # type: None or Dict
+        self.__upserted_report = None                   # type: None or Report
 
     def main_(self):
         logger.info("Starting test main_.")
@@ -88,20 +87,14 @@ class TestScript:
         """ Attempts the lambda. """
         logger.info("attempting lambda.")
 
-        """
         try:
-        """
+            d = lambda_handler(self.__test_event, {})               # type: Dict
+            self.__upserted_report = Report.from_dict(d)
 
+            logger.info("lambda succeeded.")
 
-        d = lambda_handler(self.__test_event, {})               # type: Dict
-        report = Report.from_dict(d)
-
-        logger.info("lambda succeeded.")
-
-        """
         except Exception as e:
             logger.error("lambda failed.  Exception: '{}'.".format(str(e)))
-        """
 
         logger.info("lambda attempt complete.")
 

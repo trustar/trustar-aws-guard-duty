@@ -1,7 +1,7 @@
 # encoding = utf-8
 
 """ An object that can be used to check API creds' permissions to
-varios enclaves. """
+various enclaves. """
 
 from logging import getLogger
 
@@ -42,4 +42,4 @@ class EnclavePermissionsChecker:
 
     def can_update(self, enclave_id):                    # type: (str) -> bool
         """ Checks to see if the creds have update access to the enclave. """
-        return self.get_perms(enclave_id).updatee
+        return self.get_perms(enclave_id).update
