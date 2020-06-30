@@ -26,4 +26,4 @@ Making the zip:
 - install Homebrew, if not yet installed on your dev computer.
 - Follow these instructions to install AWS SAM CLI utility:
     https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install-mac.html
-- 
+-
