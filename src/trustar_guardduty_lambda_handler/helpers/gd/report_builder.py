@@ -56,9 +56,11 @@ class GuardDutyReportBuilder:
         logger.info("TimeBegan in ReportBuilder after assigning to the "
                     "report object:  '{}'".format(r.time_began))
 
+        logger.info("TimeBegan type:  '{}'.".format(str(type(r.time_began))))
+
         d = r.to_dict()
         logger.info("TimeBegan in ReportBuiilder after converting report to "
-                    "dict:  '{}'.")
+                    "dict:  '{}'.".format(d['timeBegan']))
 
 
 
