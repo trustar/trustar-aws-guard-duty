@@ -22,6 +22,10 @@ class ExternalIdEncoder:
     - calculate to the same thing every time, given the same inputs.
     - be url-encodeable. (some endpoints use them in query-string-params). """
 
+    def __init__(self, exception_if_reversible_fails=True         # type: bool
+                 ):
+        self.exc_if_rev_fail = exception_if_reversible_fails      # type: bool
+
     @staticmethod
     def irreversible(enclave_id, external_id):       # type: (str, str) -> str
         """ Uses enclave ID and desired external ID to produce an
@@ -37,18 +41,22 @@ class ExternalIdEncoder:
 
         return str(uuid.uuid5(namespace_uuid, external_id))
 
-    @classmethod
-    def reversible(cls, enclave_id, external_id):    # type: (str, str) -> str
+    def reversible(self, enclave_id, external_id):   # type: (str, str) -> str
         """ Makes a reversible external ID. """
         s = enclave_id + '|' + external_id                       # type: str
         b = s.encode('utf-8')                                    # type: bytes
         encoded = base64.b64encode(b)                            # type: bytes
         stringified_b64_encoding = encoded.decode('utf-8')       # type: str
-        if cls.reverse(stringified_b64_encoding) != s:
-            logger.error("External ID encoder produced an external ID "
-                         "that does not reverse. String: '{}'.  "
-                         "Stringified encoding:  '{}'."
-                         .format(s, stringified_b64_encoding))
+        if self.reverse(stringified_b64_encoding) != s:
+            msg = ("External ID encoder's 'reversible' method produced an  "
+                   "external ID that its 'reverse' method did not "
+                   "successfully reverse. String: '{}'.  Stringified "
+                   "encoding:  '{}'."
+                   .format(s, stringified_b64_encoding))
+            logger.error(msg)
+            if self.exc_if_rev_fail:
+                raise Exception(msg)
+
         return stringified_b64_encoding
 
     @staticmethod
