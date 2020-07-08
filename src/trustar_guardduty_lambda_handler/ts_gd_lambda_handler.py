@@ -19,18 +19,15 @@ logger = getLogger(__name__)                                    # type: Logger
 
 
 class TruStarGuardDutyLambdaHandler:
+    """ The Lambda function handler for Guard Duty events. """
 
-    @staticmethod
-    def handle(event, context):                  # type: (Dict, Any) -> Report
-        """ """
-        destination_enclave = os.environ['ENCLAVE_ID']
+    CLIENT_METATAG = "AWS_GUARD_DUTY"
 
-        logger.info("starting lambda handler.")
-
-        gd_report = GuardDutyReportBuilder.build_for(event)     # type: Report
-
+    def __init__(self):
+        logger.info("Initializing lambda handler.")
+        destination_enclave = os.environ['ENCLAVE_ID']             # type: str
         ts = ClientBuilder.from_env_vars(
-            client_metatag="AWS_GUARD_DUTY")                   # type: TruStar
+            client_metatag=self.CLIENT_METATAG)                # type: TruStar
 
         permissions_checker = EnclavePermissionsChecker(ts)
         if not permissions_checker.can_create(destination_enclave):
@@ -38,9 +35,13 @@ class TruStarGuardDutyLambdaHandler:
                             "write to enclave '{}'."
                             .format(destination_enclave))
 
-        upserter = ReportUpserter(ts, [destination_enclave])
-        upserted_report = upserter.upsert(gd_report)            # type: Report
+        self.builder = GuardDutyReportBuilder(destination_enclave)
+        self.upserter = ReportUpserter(ts, destination_enclave)
 
+    def handle(self, event):                            # type: (Dict) -> Dict
+        """ Processes a Guard-duty event. """
+        logger.info("starting lambda handler.")
+        report = self.builder.build_for(event)                  # type: Report
+        upserted_report = self.upserter.upsert(report)          # type: Report
         logger.info("lambda handler complete.")
-
-        return upserted_report
+        return upserted_report.to_dict()
