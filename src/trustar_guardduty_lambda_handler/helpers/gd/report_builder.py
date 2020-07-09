@@ -3,7 +3,6 @@
 """ An object that converts a Guard Duty Finding to a TruSTAR Report. """
 
 import json
-from datetime import datetime
 from logging import getLogger
 from trustar import Report
 from ..ts.external_id_encoder import ExternalIdEncoder
