@@ -54,15 +54,10 @@ class GuardDutyReportBuilder:
 
         logger.info("TimeBegan in ReportBuilder after assigning to the "
                     "report object:  '{}'".format(r.time_began))
-
         logger.info("TimeBegan type:  '{}'.".format(str(type(r.time_began))))
-
         d = r.to_dict()
         logger.info("TimeBegan in ReportBuiilder after converting report to "
                     "dict:  '{}'.".format(d['timeBegan']))
-
-
-
         return r
 
     @staticmethod
@@ -72,11 +67,7 @@ class GuardDutyReportBuilder:
         time_began = None                                  # type: None or str
         if service:
             time_began = service.get('eventFirstSeen')
-            """
-            format = '%Y-%m-%dT%H:%M:%S+%z'
-            time_began = datetime.strptime(time_began, format)
-            """
-        logger.info("TimeBegan in report builder:  {}"
+        logger.info("TimeBegan found in GD event:  {}"
                     .format(time_began))
         return time_began
 
