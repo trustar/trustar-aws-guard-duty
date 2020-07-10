@@ -7,7 +7,7 @@ sudo yum groupinstall "Development Tools"
 git --version
 gcc --version
 bash --version
-python --version # (system)
+python --version   # system python version.
 sudo yum install -y openssl-devel readline-devel zlib-devel
 sudo yum update
 
@@ -29,13 +29,14 @@ git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/py
 echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bash_profile
 
 ### restart SHELL and virtualenv
-pyenv virtualenv 3.7.7 test-3.7.7
+pyenv virtualenv 3.7.7 default-3.7.7
 pyenv virtualenvs
-pyenv local test-3.7.7
+pyenv local default-3.7.7
 pyenv version
-cat .python-version #> test-3.7.7
-
+cat .python-version
 pyenv rehash
 
-python --version #> Python 3.7.7
+python --version
 pip list --format=columns
+
+EOF
