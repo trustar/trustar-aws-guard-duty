@@ -34,11 +34,6 @@ class ReportUpserter:
         logger.info("Starting upsert for report with external ID '{}'."
                     .format(report.external_id))
 
-        logger.info("TimeBegan:  {}".format(report.time_began))
-        logger.info("TimeBegan type: '{}'.".format(str(type(report.time_began))))
-
-
-
         if not report.enclave_ids:
             report.enclave_ids = [self.enclave_id]
 
@@ -87,11 +82,15 @@ class ReportUpserter:
         try:
             existing_report = self.ts.get_report_details(
                 external_id, id_type=IdType.EXTERNAL)
-            logger.info("Report with external ID '{}' exists in destination "
-                        "enclave.".format(external_id))
+            logger.info("Report with external ID '{}' found.  It "
+                        "resides in enclave(s) '{}'."
+                        .format(external_id, existing_report.enclave_ids))
         except:
-            logger.info("No report found in destination enclave with "
-                        "external ID '{}'.".format(external_id))
+            logger.info("Call to check for an existing report by this "
+                        "external ID failed.  Assuming that no report with "
+                        "external ID '{}' exists in Station, but it is "
+                        "possible that this failure was a fluke."
+                        .format(external_id))
         return existing_report
 
     def update_report(self, existing_report,           # type: Report
@@ -112,8 +111,6 @@ class ReportUpserter:
         new_report.body = gd_report.body
 
         try:
-            logger.info("Submitting report \n{}"
-                        .format(json.dumps(new_report.to_dict(), indent=4)))
             updated_report = self.ts.update_report(new_report)
             logger.info("Updated report with ID '{}', external ID '{}', "
                         "title '{}'.".format(updated_report.id,
@@ -132,7 +129,7 @@ class ReportUpserter:
     def submit_report(self, report):                # type: (Report) -> Report
         """ Submits the report, log error & throw exception if fail."""
         try:
-            submitted_report = self.ts.submit_report(report)  # type: Report
+            submitted_report = self.ts.submit_report(report)    # type: Report
             logger.info("Submitted report with ID '{}', external ID '{}', "
                         "title '{}'.".format(submitted_report.id,
                                              submitted_report.external_id,
@@ -145,7 +142,7 @@ class ReportUpserter:
         return submitted_report
 
     def msg_dont_use_ts_client_encl_ids(self):  # type: () -> str
-        msg = ("Do not specify the TruStar client's  'enclave_ids' "
+        msg = ("Do not specify the TruStar client's 'enclave_ids' "
                "attribute when using the '{}' class.  This can lead to "
                "confusion regarding which enclave(s) the Upserter's "
                "reports will be upserted to."
