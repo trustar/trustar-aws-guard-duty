@@ -30,7 +30,7 @@ class GuardDutyReportBuilder:
     def build_for(self, finding):                      # type: (Dict) -> Report
         """ Builds a Report for an event.
         Note:  Does NOT validate report attribute values to ensure they
-        are valid / reasonable.  VALIDATE AFTER BUILDING! """
+        are valid / reasonable. """
 
         detail = finding.get('detail')
         if not detail:
