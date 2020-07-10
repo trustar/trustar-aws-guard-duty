@@ -120,6 +120,11 @@ class TestGDLambdaFunction:
                              station_report,
                              self.expected_report)
         self.cleanup_env_vars()
+        if self.delete_reports_when_done:
+            logger.info("deleting test report from enclave.")
+            _ = self.ts.delete_report(station_report.external_id,
+                                      id_type=IdType.EXTERNAL)
+            logger.info("done deleting test report from enclave.")
         logger.info("test main_ complete.")
 
     def attempt_lambda(self, test_event):             # type: (Dict) -> Report
@@ -145,6 +150,7 @@ class TestGDLambdaFunction:
         """ Compares the report in the enclave to the expected report
         in the tests/data/expected_report.json. """
         logger.info("Comparing reports.")
+        vars_to_ignore = ["created", "updated", "id"]
         for v in vars(report_in_enclave):
             val_in_enclave = getattr(report_in_enclave, v)
             upserted_val = getattr(upserted_report, v)
@@ -164,6 +170,7 @@ class TestGDLambdaFunction:
                 del os.environ[env_var]
                 logger.debug("Removed '{}' env var.".format(env_var))
         logger.info("Done cleaning up environment variables.")
+
 
 
 class TestReportSubmit:
@@ -259,5 +266,6 @@ if __name__ == "__main__":
     t = TestGDLambdaFunction(
         config_file_path=config_file_path,
         sample_event_file_path=sample_event_file_path,
-        expected_report_file_path=expected_report_file_path)
+        expected_report_file_path=expected_report_file_path,
+        delete_reports_when_done=True)
     t.main_()
