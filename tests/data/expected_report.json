@@ -5,10 +5,8 @@
    "externalUrl":"arn:aws:guardduty:us-east-1:123456789012:detector/123456789012/finding/16afba5c5c43e07c9e3e5e2e544e95df",
    "distributionType":"ENCLAVE",
    "externalTrackingId":"MzVlMDkxZGYtZDBlYS00NTIxLTljZjMtNGM2NDJmZjQyNGJmfDk5YWZiYTVjNWM0M2UwN2M5ZTNlNWUyZTU0NGU5NWRm",
-   "enclaveIds":[
-      "35e091df-d0ea-4521-9cf3-4c642ff424bf"
-   ],
-   "created":1593613861872,
-   "updated":1593613861872,
-   "id":"cfc16e03-876b-42b1-b904-11589d09a2a8"
+   "enclaveIds":[],
+   "created":"",
+   "updated":"",
+   "id":""
 }
