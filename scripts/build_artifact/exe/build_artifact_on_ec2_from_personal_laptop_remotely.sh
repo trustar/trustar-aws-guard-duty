@@ -1,12 +1,8 @@
 #!/bin/bash
 # Run this from your local laptop.
 # Pre-reqs:
-#  -create a new GitHub SSH key and install it in your user account on the EC2 instance.
-#    (that host will need to be able to clone this git repo)
-#  -setup Python 3.7.7 venv on the EC2 instance using the "amzn_linux_pyen_install.sh"
-#    script in "first_time_run" dir.
-#  -in SSH config file on your laptop, make an entry named "gdbuilder" that will
-#   SSH you into the EC2 instance to a user account that has "sudo".  (usually 'ec2-user')
+#  -setup build environment on an amazonlinux2 EC2 instance using the
+#    "ec2_instance_one-time-setup.sh" script in the "first_time_run" dir.
 #
 # This script will...:
 #  -SSH into the EC2 instance.
@@ -26,18 +22,8 @@
 rm -rf ../build/  # in case it's already there.
 ssh gdbuilder << EOF
 BRANCH_TO_BUILD=master
-pyenv install 3.7.7 -s
-pyenv virtualenv-delete -f gdbuild-3.7.7
-pyenv virtualenv 3.7.7 gdbuild-3.7.7
-pyenv virtualenvs
-pyenv activate gdbuild-3.7.7
-pyenv version
-cat .python-version
-pyenv rehash
-python --version
+sudo yum update -y
 pip install --upgrade pip setuptools
-pip list --format=columns
-
 rm -rf temp_build
 mkdir temp_build
 cd temp_build
@@ -47,7 +33,7 @@ git fetch --all
 git pull --all
 git checkout $BRANCH_TO_BUILD
 mkdir ./build
-cp -R ./src/* ./build/
+cp -R ./src/exe/* ./build/
 pipenv lock -r > requirements.txt
 pipenv run pip install -r ./requirements.txt --target ./build/
 cd build
