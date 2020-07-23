@@ -13,7 +13,6 @@ aws-sam-cli = "*"
 
 [packages]
 trustar = "==0.3.29"
-trustar-guardduty = {editable = true,path = "."}
 
 [requires]
 python_version = "3.7.7"
