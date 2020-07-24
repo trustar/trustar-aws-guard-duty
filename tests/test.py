@@ -152,6 +152,9 @@ class TestGDLambdaFunction:
         logger.info("Comparing reports.")
         vars_to_ignore = ["created", "updated", "id"]
         for v in vars(report_in_enclave):
+            if v in vars_to_ignore:
+                continue
+
             val_in_enclave = getattr(report_in_enclave, v)
             upserted_val = getattr(upserted_report, v)
             expected_val = getattr(expected_report, v)
