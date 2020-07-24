@@ -2,11 +2,9 @@
 
 """ TruSTAR's Guard Duty Finding Lambda Handler. """
 
-import time
-import os
 from logging import getLogger
-from trustar import IdType
-import datetime
+import os
+
 from .helpers.gd.report_builder import GuardDutyReportBuilder
 from .helpers.ts.enclave_permissions_checker import EnclavePermissionsChecker
 from .helpers.ts.report_upserter import ReportUpserter
@@ -27,7 +25,7 @@ class TruStarGuardDutyLambdaHandler:
     """ The Lambda function handler for Guard Duty events. """
 
     CLIENT_METATAG = "AWS_GUARD_DUTY"
-    VARS_TO_SKIP = ["created", "updated", "id"]
+    VARS_TO_SKIP = ("created", "updated", "id")
 
     def __init__(self):
         logger.info("Initializing lambda handler.")
