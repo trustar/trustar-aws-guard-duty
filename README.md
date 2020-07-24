@@ -170,6 +170,8 @@ SOFTWARE PRE-REQS FOR THIS PROJECT:
 
 IDE SETUP:
 
+- If your IDE has a "souces root" feature, mark the "exe" dir as a sources root. 
+
 - IDE should execute trustar-aws-guard-duty/tests/test.py using your virtual
    env interpreter and a current working directory of
    trustar-aws-guard-duty/tests.
