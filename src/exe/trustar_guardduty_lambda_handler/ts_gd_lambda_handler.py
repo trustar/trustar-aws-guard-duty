@@ -69,17 +69,14 @@ class TruStarGuardDutyLambdaHandler:
     def check_saved_report(self):                           # type: () -> bool
         """ Determines whether the user specified to check the report saved
         in Station against the report it upserted. """
-        true_msg = "user wants saved report checked."
         check = False
         env_var = os.environ.get("RETURN_SAVED_REPORT")
         if isinstance(env_var, str):
-            if env_var == "True":
-                logger.info(true_msg)
-                check = True
+            check = env_var == "True"
         elif isinstance(env_var, bool):
-            if env_var:
-                logger.info(true_msg)
-                check = True
+            check = env_var
+        if check:
+            logger.info("user wants saved report checked.")
         else:
             logger.info("user does not want saved report checked.")
         return check
