@@ -38,13 +38,13 @@ class TestGDLambdaFunction:
     """ Tests to ensure that the lambda function functions properly. """
 
     STANZA = 'env_vars'
-    REPORT_ATTRS_TO_COMPARE = ['title',
+    REPORT_ATTRS_TO_COMPARE = ('title',
                                'body',
                                'time_began',
                                'external_url',
                                'external_id',
                                'enclave_ids',
-                               'id']
+                               'id')
 
     def __init__(self, sample_event_file_path,                    # type: str
                  expected_report_file_path,                       # type: str
@@ -173,7 +173,6 @@ class TestGDLambdaFunction:
                 del os.environ[env_var]
                 logger.debug("Removed '{}' env var.".format(env_var))
         logger.info("Done cleaning up environment variables.")
-
 
 
 class TestReportSubmit:
