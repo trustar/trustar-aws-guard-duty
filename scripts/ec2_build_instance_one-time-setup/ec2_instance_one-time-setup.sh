@@ -1,6 +1,4 @@
-# WARNING:  DO NOT EXECUTE THIS FILE FROM YOUR LAPTOP.
-#
-#
+# EC-2 "BUILD" INSTANCE ONE-TIME-SETUP SCRIPT.
 # Does: Sets up Python 3.7.7 venv on an AmazonLinux2 EC-2 instance.
 #
 # Pre-Reqs:
@@ -14,13 +12,13 @@
 #  -install c-compiler toolchain.
 #  -install pyenv
 #  -use pyenv to install Python 3.7.7.
-#  -install pyenv-virtualenv
-#  -create & activate a default Python 3.7.7 virtual envirtonment named "default-3.7.7".
-#    *This virtual environment will always be activated when you SSH into this
-#     host from now on.
 #
-# Run this on an AmazonLinux EC-2 instance under a user with "sudo" privs.
+# Run this from your personal laptop.  It will SSH to the instance and do the
+# work.
+#
 # Ref:  https://gist.github.com/mrthomaskim/e48d747816cfac0b481684e7a5084e48
+#
+# If script fails,
 
 
 
