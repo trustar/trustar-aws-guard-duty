@@ -31,10 +31,8 @@ class ReportComparer:
             enclave_val = getattr(from_enclave, v)
             upserted_val = getattr(upserted, v)
             if v == 'time_began':
-                are_time_begans_eq = cls.compare_time_begans(
+                are_reports_equal = cls.compare_time_begans(
                     upserted_val, enclave_val)                    # type: bool
-                if not are_time_begans_eq:
-                    are_reports_equal = False
             elif not enclave_val == upserted_val:
                 msg = ("For instance-var '{}', upserted:  '{}', " 
                        "found in enclave:  '{}'."
