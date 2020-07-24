@@ -18,7 +18,7 @@ class ReportComparer:
     @classmethod
     def compare(cls, upserted,                          # type: Report
                 from_enclave,                           # type: Report
-                vars_to_ignore                          # type: List[str]
+                vars_to_ignore                          # type: Tuple[str]
                 ):                                      # type: (...) -> bool
         """ Compares the report in the enclave to the upserted report
         and logs any discrepancies. """
