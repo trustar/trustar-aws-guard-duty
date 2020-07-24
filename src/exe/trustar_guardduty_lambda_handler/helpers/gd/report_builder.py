@@ -18,8 +18,8 @@ class GuardDutyReportBuilder:
     """ Builds TruSTAR report from Guard Duty Finding event.
     NOTE: No validation of attribute values done by this object.  """
 
-    GD_FINDING_DETAIL_KEYS = ['title', 'description', 'severity',
-                              'createdAt', 'updatedAt', 'service']
+    GD_FINDING_DETAIL_KEYS = ('title', 'description', 'severity',
+                              'createdAt', 'updatedAt', 'service')
 
     DEFAULT_TITLE = 'NO TITLE FOUND IN GUARDDUTY EVENT'
 
