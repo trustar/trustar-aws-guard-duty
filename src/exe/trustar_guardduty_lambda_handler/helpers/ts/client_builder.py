@@ -18,12 +18,12 @@ logger = getLogger(__name__)
 class ClientBuilder:
     """ Builds TruStar client from Lambda's Environ Vars. """
 
-    TRUSTAR_CLIENT_PARAMS = ['user_api_key',
+    TRUSTAR_CLIENT_PARAMS = ('user_api_key',
                              'user_api_secret',
                              'http_proxy',
                              'https_proxy',
                              'auth_endpoint',
-                             'api_endpoint']
+                             'api_endpoint')
 
     @classmethod
     def from_env_vars(cls, client_metatag):           # type: (str) -> TruStar
