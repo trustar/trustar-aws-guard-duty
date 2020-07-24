@@ -1,0 +1,12 @@
+{
+   "title":"99:EC2/Stateless.IntegTest",
+   "reportBody":"{\n    \"createdAt\": \"2017-10-31T23:16:23.824Z\",\n    \"description\": \"99:EC2/Stateless.IntegTest\",\n    \"service\": {\n        \"action\": {\n            \"actionType\": \"NETWORK_CONNECTION\",\n            \"networkConnectionAction\": {\n                \"blocked\": false,\n                \"connectionDirection\": \"OUTBOUND\",\n                \"localPortDetails\": {\n                    \"port\": 2000,\n                    \"portName\": \"Unknown\"\n                },\n                \"protocol\": \"TCP\",\n                \"remoteIpDetails\": {\n                    \"city\": {\n                        \"cityName\": \"GeneratedFindingCityName\"\n                    },\n                    \"country\": {\n                        \"countryName\": \"United States\"\n                    },\n                    \"geoLocation\": {\n                        \"lat\": 0,\n                        \"lon\": 0\n                    },\n                    \"ipAddressV4\": \"198.51.100.0\",\n                    \"organization\": {\n                        \"asn\": -1,\n                        \"isp\": \"GeneratedFindingISP\",\n                        \"org\": \"GeneratedFindingORG\"\n                    }\n                },\n                \"remotePortDetails\": {\n                    \"port\": 22,\n                    \"portName\": \"SSH\"\n                }\n            }\n        },\n        \"additionalInfo\": {\n            \"threatListName\": \"GeneratedFindingCustomerListName\",\n            \"unusual\": 22,\n            \"unusualProtocol\": \"UDP\"\n        },\n        \"archived\": false,\n        \"count\": 1,\n        \"detectorId\": \"3caf4e0aaa46ce4ccbcef949a8785353\",\n        \"eventFirstSeen\": \"2017-10-31T23:16:23Z\",\n        \"eventLastSeen\": \"2017-10-31T23:16:23Z\",\n        \"resourceRole\": \"TARGET\",\n        \"serviceName\": \"guardduty\"\n    },\n    \"severity\": 5,\n    \"title\": \"99:EC2/Stateless.IntegTest\",\n    \"updatedAt\": \"2017-10-31T23:16:23.824Z\"\n}",
+   "timeBegan":1509491783000,
+   "externalUrl":"arn:aws:guardduty:us-east-1:123456789012:detector/123456789012/finding/16afba5c5c43e07c9e3e5e2e544e95df",
+   "distributionType":"ENCLAVE",
+   "externalTrackingId":"MzVlMDkxZGYtZDBlYS00NTIxLTljZjMtNGM2NDJmZjQyNGJmfDk5YWZiYTVjNWM0M2UwN2M5ZTNlNWUyZTU0NGU5NWRm",
+   "enclaveIds":[],
+   "created":"",
+   "updated":"",
+   "id":""
+}

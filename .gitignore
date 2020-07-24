@@ -1,0 +1,9 @@
+.pyc
+.DS_Store
+__pycache__
+*.conf
+*.ini
+build
+.eggs
+*.egg-info
+requirements.txt
