@@ -10,7 +10,7 @@ from trustar import TruStar, IdType
 
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
-    from typing import *
+    from typing import List
     from logging import Logger
     from trustar import Report
 
@@ -81,6 +81,7 @@ class ReportUpserter:
         #  is down.  Add code that handles those two cases differently.
 
         existing_report = None
+        # noinspection PyBroadException
         try:
             existing_report = self.ts.get_report_details(
                 external_id, id_type=IdType.EXTERNAL)

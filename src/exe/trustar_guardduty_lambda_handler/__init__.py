@@ -3,4 +3,5 @@
 """ A package that does all the work necessary to submit Guard-Duty
 events/findings to TruSTAR as reports. """
 
+# noinspection PyUnresolvedReferences
 from .ts_gd_lambda_handler import TruStarGuardDutyLambdaHandler

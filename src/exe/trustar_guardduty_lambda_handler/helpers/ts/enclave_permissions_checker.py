@@ -7,7 +7,7 @@ from logging import getLogger
 
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
-    from typing import *
+    from typing import List, Dict
     from logging import Logger
     from trustar import TruStar, EnclavePermissions
 

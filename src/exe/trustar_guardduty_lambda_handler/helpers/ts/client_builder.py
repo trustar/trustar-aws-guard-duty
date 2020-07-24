@@ -9,7 +9,6 @@ from trustar import TruStar
 
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
-    from typing import *
     from logging import Logger
     from trustar import TruStar
 

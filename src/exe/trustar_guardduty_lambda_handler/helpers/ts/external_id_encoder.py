@@ -8,7 +8,6 @@ import uuid
 
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
-    from typing import *
     from logging import Logger
 
 logger = getLogger(__name__)                                    # type: Logger

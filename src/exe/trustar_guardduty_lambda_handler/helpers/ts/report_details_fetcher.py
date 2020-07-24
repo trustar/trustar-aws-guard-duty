@@ -9,7 +9,6 @@ from trustar import IdType
 
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
-    from typing import *
     from logging import Logger
     from trustar import Report, TruStar
 
@@ -29,7 +28,9 @@ class ReportDetailsFetcher:
         while attempt <= max_n_attempts:
             attempt += 1
             time.sleep(2)
+            # noinspection PyUnusedLocal
             r = None                                   # type:  Report or None
+            # noinspection PyBroadException
             try:
                 r = self.ts.get_report_details(
                     external_id, id_type=IdType.EXTERNAL)

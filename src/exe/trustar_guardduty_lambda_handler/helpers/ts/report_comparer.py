@@ -8,7 +8,7 @@ from .time_converter import TimeConverter
 
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
-    from typing import *
+    from typing import Tuple
     from logging import Logger
     from trustar import Report
 

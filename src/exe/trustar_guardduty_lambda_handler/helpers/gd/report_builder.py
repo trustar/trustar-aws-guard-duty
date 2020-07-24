@@ -11,7 +11,7 @@ from ..ts.external_id_encoder import ExternalIdEncoder
 
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
-    from typing import *
+    from typing import Dict
     from logging import Logger
 
 logger = getLogger(__name__)                                    # type: Logger
