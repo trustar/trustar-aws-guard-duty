@@ -2,6 +2,7 @@
 
 """ Upserts TruSTAR Report objects. """
 
+import copy
 import json
 from logging import getLogger
 
@@ -104,7 +105,7 @@ class ReportUpserter:
         # not pertinent here but might have values in Station.
         # If we don't do this, Station overwrites existing attribute values
         # with null.
-        new_report = existing_report
+        new_report = copy.copy(existing_report)
         new_report.title = gd_report.title
         new_report.time_began = gd_report.time_began
         new_report.external_url = gd_report.external_url
