@@ -13,8 +13,8 @@ if TYPE_CHECKING:
 
 logger = getLogger(__name__)                                    # type: Logger
 
-__RANDOM_UUID = 'f541adc0-f8b4-42a3-a1d9-fbcbfb2820a5'
-ENCLAVE_UUID_NAMESPACE = uuid.UUID(__RANDOM_UUID)
+__ARBITRARY_SEED = 'f541adc0-f8b4-42a3-a1d9-fbcbfb2820a5'
+ENCLAVE_UUID_NAMESPACE = uuid.UUID(__ARBITRARY_SEED)
 
 class ExternalIdEncoder:
     """ Encodes eternal IDs for TruSTAR reports.
