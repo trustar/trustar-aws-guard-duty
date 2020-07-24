@@ -4,7 +4,9 @@
 
 import json
 from logging import getLogger
+
 from trustar import Report
+
 from ..ts.external_id_encoder import ExternalIdEncoder
 
 from typing import TYPE_CHECKING

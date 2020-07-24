@@ -2,9 +2,9 @@
 
 """ An object that encodes TruSTAR external IDs. """
 
-import uuid
 import base64
 from logging import getLogger
+import uuid
 
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:

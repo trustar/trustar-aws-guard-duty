@@ -3,8 +3,10 @@
 """ ReportComparer class definition. """
 
 from logging import getLogger
-from typing import TYPE_CHECKING
+
 from .time_converter import TimeConverter
+
+from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from typing import *
     from logging import Logger

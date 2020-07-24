@@ -2,17 +2,18 @@
 
 """ Builds TruStar client objects from Environment Variables. """
 
-import os
 from logging import getLogger
+import os
+
 from trustar import TruStar
 
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from typing import *
-    from logging import getLogger
+    from logging import Logger
     from trustar import TruStar
 
-logger = getLogger(__name__)
+logger = getLogger(__name__)                                    # type: Logger
 
 
 class ClientBuilder:

@@ -4,6 +4,7 @@
 
 import time
 from logging import getLogger
+
 from trustar import IdType
 
 from typing import TYPE_CHECKING

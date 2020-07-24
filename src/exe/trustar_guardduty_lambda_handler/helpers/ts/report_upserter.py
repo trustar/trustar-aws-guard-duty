@@ -4,6 +4,7 @@
 
 import json
 from logging import getLogger
+
 from trustar import TruStar, IdType
 
 from typing import TYPE_CHECKING
